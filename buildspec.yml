@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Entered the test phase...
+      - mvn clean compile test
+  build:
+    commands:
+      - echo Entered the build phase...
+      - mvn package
+  post_build:
+    commands:
+      - echo Build completed successfully
+artifacts:
+  files:
+    - target/api-gateway-service.jar
+  discard-paths: yes
