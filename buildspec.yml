@@ -1,18 +1,19 @@
 version: 0.2
 
 phases:
-  pre_build:
-    commands:
-      - echo Entered the test phase...
-      - mvn clean compile test
+  install:
+    runtime-versions:
+      java: corretto17
   build:
     commands:
-      - echo Entered the build phase...
-      - mvn package
+      - echo Build started on `date`
+      - mvn clean test
   post_build:
     commands:
-      - echo Build completed successfully
+      - echo Build completed on `date`
+      - mvn clean package
 artifacts:
   files:
-    - target/api-gateway-service.jar
+    - target/app.jar
+    - appspec.yml
   discard-paths: yes
