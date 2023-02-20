@@ -14,12 +14,5 @@ eureka:
       defaultZone: http://localhost:8761/eureka
   instance:
     instance-id: ${spring.application.name}:${random.value}
-api:
-  allowedPaths:
-    /ref-data-service/api/v1/ref-data/by-data-type,
-    /ref-data-service/api/v1/ref-data/data-types,
-    /user-service/api/v1/users/email,
-    /user-service/api/v1/users/sign-up,
-    /user-service/api/v1/users/sign-in
 jwt:
   secret: bezKoderSecretKey
