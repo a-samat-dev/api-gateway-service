@@ -23,6 +23,10 @@ public class AuthenticationFilter implements GatewayFilter {
     public Mono<Void> filter(ServerWebExchange exchange,
                              GatewayFilterChain chain) {
         HttpHeaders headers = exchange.getRequest().getHeaders();
+        exchange.getRequest().mutate()
+                .header("userId", "")
+                .header("role", "")
+                .build();
 
         if (headers.containsKey("Authorization")) {
             final String token = headers.getOrEmpty("Authorization").get(0);
@@ -55,6 +59,7 @@ public class AuthenticationFilter implements GatewayFilter {
     private Mono<Void> onError(ServerWebExchange exchange) {
         ServerHttpResponse response = exchange.getResponse();
         response.setStatusCode(HttpStatus.UNAUTHORIZED);
+
         return response.setComplete();
     }
 }

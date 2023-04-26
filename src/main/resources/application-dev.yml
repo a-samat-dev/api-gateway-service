@@ -1,6 +1,0 @@
-server:
-  port: 5000
-eureka:
-  client:
-    service-url:
-      defaultZone: http://awseb-awseb-13vv4savxy5co-1660512157.eu-central-1.elb.amazonaws.com/eureka

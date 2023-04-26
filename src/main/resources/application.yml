@@ -1,18 +1,9 @@
 server:
-  port: 8080
+  port: ${SERVER_PORT:8080}
 spring:
   application:
     name: api-gateway-service
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          lower-case-service-id: true
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
-  instance:
-    instance-id: ${spring.application.name}:${random.value}
 jwt:
-  secret: bezKoderSecretKey
+  secret: ${JWT_SECRET}
+service-mapping:
+  user-service: ${USER_SERVICE}
