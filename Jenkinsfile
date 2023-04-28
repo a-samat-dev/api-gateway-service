@@ -1,5 +1,9 @@
 pipeline {
   agent any
+  tools {
+    maven "maven 3.9.1"
+  }
+
   stages {
     stage('Checkout') {
       steps {
@@ -10,9 +14,7 @@ pipeline {
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
-        withMaven {
-            sh 'mvn clean package'
-        }
+        sh 'mvn clean package'
         sh 'maven build completed'
       }
     }
