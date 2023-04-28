@@ -16,10 +16,9 @@ spec:
     spec:
       containers:
         - name: api-gateway-service-deployment
-          image: ${REPOSITORY_TAG}
+          image: asamatdev/sh-api-gateway-service:replaceImageTag
           ports:
             - containerPort: 8080
-          imagePullPolicy: Never
           envFrom:
             - configMapRef:
                 name: sh-config-maps
