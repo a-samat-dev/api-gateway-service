@@ -26,9 +26,9 @@ spec:
                 name: sh-secrets
           resources:
             requests:
-              memory: "64Mi"
+              memory: "30Mi"
             limits:
-              memory: "256Mi"
+              memory: "50Mi"
 ---
 apiVersion: v1
 kind: Service
