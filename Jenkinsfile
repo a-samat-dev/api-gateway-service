@@ -14,6 +14,7 @@ pipeline {
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
+        sh 'mvn --version'
         sh 'mvn clean package'
         sh 'maven build completed'
       }
