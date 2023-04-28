@@ -10,7 +10,10 @@ pipeline {
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
-        sh 'mvn clean package'
+        withMaven {
+            sh 'mvn clean package'
+        }
+        sh 'maven build completed'
       }
     }
     stage('Build and Push Docker Image') {
