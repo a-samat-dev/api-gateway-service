@@ -15,6 +15,7 @@ pipeline {
       steps {
         sh 'ls -ltr'
         sh 'mvn --version'
+        sh 'echo JAVA_HOME'
         sh 'mvn clean package'
         sh 'maven build completed'
       }
