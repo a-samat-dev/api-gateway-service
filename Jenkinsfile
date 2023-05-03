@@ -1,11 +1,9 @@
 pipeline {
-   agent any
-//   agent {
-//     docker {
-//         image 'asamatdev/mvn-docker-agent'
-//         args '--user root -v /var/run/docker.sock:/var/run/docker.sock'
-//     }
-//   }
+  agent {
+    docker {
+        image 'asamatdev/mvn-docker-agent'
+    }
+  }
 
   stages {
     stage('Checkout') {
