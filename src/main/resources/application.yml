@@ -4,6 +4,6 @@ spring:
   application:
     name: api-gateway-service
 jwt:
-  secret: ${JWT_SECRET}
+  secret: ${JWT_SECRET:jwtSecret}
 service-mapping:
   user-service: ${USER_SERVICE}
