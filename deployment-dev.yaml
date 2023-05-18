@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-api-gateway-service-deployment
+  labels:
+    app: dev-api-gateway-service-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dev-api-gateway-service-deployment
+  template:
+    metadata:
+      labels:
+        app: dev-api-gateway-service-deployment
+    spec:
+      containers:
+        - name: dev-api-gateway-service-deployment
+          image: asamatdev/sh-api-gateway-service
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: dev-sh-config-maps
+            - secretRef:
+                name: dev-sh-secrets
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 200m
+            limits:
+              memory: 256Gi
+              cpu: 300m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dev-api-gateway-service
+spec:
+  selector:
+    app: dev-api-gateway-service-deployment
+  type: LoadBalancer
+  ports:
+    - port: 8080
+      targetPort: 8080

@@ -7,3 +7,4 @@ jwt:
   secret: ${JWT_SECRET:jwtSecret}
 service-mapping:
   user-service: ${USER_SERVICE}
+  patient-service: ${PATIENT_SERVICE}

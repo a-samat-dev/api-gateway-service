@@ -25,6 +25,9 @@ public class GatewayConfig {
                 .route("user-service", r -> r.path("/user-service/**")
                         .filters(f -> f.filter(filter))
                         .uri(serviceMapping.getUserService()))
+                .route("patient-service", r -> r.path("/patient-service/**")
+                        .filters(f -> f.filter(filter))
+                        .uri(serviceMapping.getPatientService()))
                 .build();
     }
 
