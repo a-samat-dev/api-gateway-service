@@ -36,9 +36,9 @@ jobs:
     - name: Log in to Docker Hub
       run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Docker image
-      run: docker build . --platform linux/amd64 --tag asamatdev/sh-api-gateway-service:${{ TAG_VERSION }}
+      run: docker build . --platform linux/amd64 --tag asamatdev/sh-api-gateway-service:${{ secrets.TAG_VERSION }}
     - name: Push the Docker image
-      run: docker push asamatdev/sh-api-gateway-service:${{ TAG_VERSION }}
+      run: docker push asamatdev/sh-api-gateway-service:${{ secrets.TAG_VERSION }}
     - name: Update tag version
       uses: hmanzur/actions-set-secret@v2.0.0
       with:
