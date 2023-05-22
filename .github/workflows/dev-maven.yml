@@ -31,6 +31,15 @@ jobs:
         java-version: '17'
         distribution: 'corretto'
         cache: maven
+    - name: Analyze with SonarQube
+      uses: SonarSource/sonarqube-scan-action@7295e71c9583053f5bf40e9d4068a0c974603ec8
+      env:
+        GITHUB_TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}  
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      with:
+        args:
+          -Dsonar.projectKey=
     - name: Build with Maven
       run: mvn clean test package
     - name: Log in to Docker Hub
