@@ -37,7 +37,9 @@ jobs:
       run: mvn clean test package
     - name: Log in to Docker Hub
       run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - name: Set current date as env variable
+      run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
     - name: Build the Docker image
-      run: docker build . --platform linux/amd64 --tag asamatdev/sh-api-gateway-service
+      run: docker build . --platform linux/amd64 --tag asamatdev/sh-api-gateway-service:$NOW
     - name: Push the Docker image
-      run: docker push asamatdev/sh-api-gateway-service
+      run: docker push asamatdev/sh-api-gateway-service:$NOW
