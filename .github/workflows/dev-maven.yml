@@ -39,7 +39,7 @@ jobs:
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       with:
         args:
-          -Dsonar.projectKey=
+          -Dsonar.projectKey=a-samat-dev_api-gateway-service
     - name: Build with Maven
       run: mvn clean test package
     - name: Log in to Docker Hub
