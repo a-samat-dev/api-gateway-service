@@ -44,7 +44,7 @@ jobs:
           -Dsonar.projectKey=a-samat-dev_api-gateway-service
           -Dsonar.organization=a-samat-dev
           -Dsonar.sources=src
-          -Dsonar.binaries=target
+          -Dsonar.java.binaries=target
           -Dsonar.sourceEncoding=UTF-8
     - name: Log in to Docker Hub
       run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
