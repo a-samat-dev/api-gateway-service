@@ -13,7 +13,12 @@ on:
     branches: [ "dev" ]
   pull_request:
     branches: [ "dev" ]
-
+    
+env:
+  DOCKER_USER: ${{secrets.DOCKER_USER}}
+  DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+  REPO_NAME: ${{secrets.REPO_NAME}}
+  
 jobs:
   build:
 
@@ -29,5 +34,9 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn clean test package
+    - name: Log in to Docker Hub
+      run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag asamatdev/sh-api-gateway-service:$(date +%s)
+      run: docker build . --platform linux/amd64 --tag asamatdev/sh-api-gateway-service:$(date +%s)
+    - name: Push the Docker image
+      run: docker push $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
