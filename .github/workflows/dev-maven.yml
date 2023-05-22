@@ -17,9 +17,7 @@ on:
 env:
   DOCKER_USER: ${{secrets.DOCKER_USER}}
   DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-  REPO_NAME: ${{secrets.REPO_NAME}}
-  CURR_DATE: $(date +%s)
-  
+
 jobs:
   build:
 
@@ -40,6 +38,6 @@ jobs:
     - name: Set current date as env variable
       run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
     - name: Build the Docker image
-      run: docker build . --platform linux/amd64 --tag asamatdev/sh-api-gateway-service:$NOW
+      run: docker build . --platform linux/amd64 --tag asamatdev/sh-api-gateway-service:${NOW}
     - name: Push the Docker image
-      run: docker push asamatdev/sh-api-gateway-service:$NOW
+      run: docker push asamatdev/sh-api-gateway-service:${NOW}
