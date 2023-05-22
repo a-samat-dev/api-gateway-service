@@ -40,6 +40,7 @@ jobs:
       with:
         args:
           -Dsonar.projectKey=a-samat-dev_api-gateway-service
+          -Dsonar.organization=a-samat-dev
     - name: Build with Maven
       run: mvn clean test package
     - name: Log in to Docker Hub
