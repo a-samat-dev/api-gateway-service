@@ -38,6 +38,6 @@ jobs:
     - name: Log in to Docker Hub
       run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Docker image
-      run: docker build . --platform linux/amd64 --tag asamatdev/sh-api-gateway-service:$CURR_DATE
+      run: docker build . --platform linux/amd64 --tag asamatdev/sh-api-gateway-service
     - name: Push the Docker image
-      run: docker push asamatdev/sh-api-gateway-service:$CURR_DATE
+      run: docker push asamatdev/sh-api-gateway-service
