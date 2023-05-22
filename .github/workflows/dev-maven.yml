@@ -42,6 +42,7 @@ jobs:
     - name: Update tag version
       uses: hmanzur/actions-set-secret@v2.0.0
       with:
+        name: 'TAG_VERSION'
         value: $((${{ secrets.TAG_VERSION }}+1))
         repository: a-samat-dev/api-gateway-service
         token: ${{ secrets.REPO_ACCESS_TOKEN }}
