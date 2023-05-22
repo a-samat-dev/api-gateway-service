@@ -18,6 +18,7 @@ env:
   DOCKER_USER: ${{secrets.DOCKER_USER}}
   DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
   REPO_NAME: ${{secrets.REPO_NAME}}
+  CURR_DATE: $(date +%s)
   
 jobs:
   build:
@@ -37,6 +38,6 @@ jobs:
     - name: Log in to Docker Hub
       run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Docker image
-      run: docker build . --platform linux/amd64 --tag asamatdev/sh-api-gateway-service:$(date +%s)
+      run: docker build . --platform linux/amd64 --tag asamatdev/sh-api-gateway-service:$CURR_DATE
     - name: Push the Docker image
-      run: docker push $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
+      run: docker push asamatdev/sh-api-gateway-service:$CURR_DATE
