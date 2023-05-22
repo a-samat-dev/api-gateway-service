@@ -35,9 +35,13 @@ jobs:
       run: mvn clean test package
     - name: Log in to Docker Hub
       run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-    - name: Set current date as env variable
-      run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
     - name: Build the Docker image
-      run: docker build . --platform linux/amd64 --tag asamatdev/sh-api-gateway-service:${{ NOW }}
+      run: docker build . --platform linux/amd64 --tag asamatdev/sh-api-gateway-service:${{ TAG_VERSION }}
     - name: Push the Docker image
-      run: docker push asamatdev/sh-api-gateway-service:${{ NOW }}
+      run: docker push asamatdev/sh-api-gateway-service:${{ TAG_VERSION }}
+    - name: Update tag version
+      uses: hmanzur/actions-set-secret@v2.0.0
+      with:
+        value: $((${{ secrets.TAG_VERSION }}+1))
+        repository: a-samat-dev/api-gateway-service
+        token: ${{ secrets.REPO_ACCESS_TOKEN }}
