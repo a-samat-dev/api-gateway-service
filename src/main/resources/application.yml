@@ -6,5 +6,5 @@ spring:
 jwt:
   secret: ${JWT_SECRET:jwtSecret}
 service-mapping:
-  user-service: ${USER_SERVICE}
-  patient-service: ${PATIENT_SERVICE}
+  user-service: ${USER_SERVICE:http://localhost:8082}
+  patient-service: ${PATIENT_SERVICE:http://localhost:8083}
