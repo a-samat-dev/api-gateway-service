@@ -28,6 +28,9 @@ public class GatewayConfig {
                 .route("patient-service", r -> r.path("/patient-service/**")
                         .filters(f -> f.filter(filter))
                         .uri(serviceMapping.getPatientService()))
+                .route("schedule-service", r -> r.path("/schedule-service/**")
+                        .filters(f -> f.filter(filter))
+                        .uri(serviceMapping.getPatientService()))
                 .build();
     }
 

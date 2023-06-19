@@ -8,3 +8,4 @@ jwt:
 service-mapping:
   user-service: ${USER_SERVICE:http://localhost:8082}
   patient-service: ${PATIENT_SERVICE:http://localhost:8083}
+  schedule-service: ${SCHEDULE_SERVICE:http://localhost:8083}
