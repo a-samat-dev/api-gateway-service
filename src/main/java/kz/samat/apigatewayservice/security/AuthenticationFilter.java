@@ -2,6 +2,7 @@ package kz.samat.apigatewayservice.security;
 
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.http.HttpHeaders;
@@ -13,6 +14,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.Map;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class AuthenticationFilter implements GatewayFilter {
@@ -22,6 +24,7 @@ public class AuthenticationFilter implements GatewayFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange,
                              GatewayFilterChain chain) {
+        log.info("Incoming request, " + exchange.getRequest().getURI());
         HttpHeaders headers = exchange.getRequest().getHeaders();
         exchange.getRequest().mutate()
                 .header("userId", "")

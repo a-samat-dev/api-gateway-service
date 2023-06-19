@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: dev-api-gateway-service-deployment
-          image: asamatdev/sh-api-gateway-service
+          image: asamatdev/sh-api-gateway-service:2
           ports:
             - containerPort: 8080
           imagePullPolicy: Always

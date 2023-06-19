@@ -30,7 +30,7 @@ public class GatewayConfig {
                         .uri(serviceMapping.getPatientService()))
                 .route("schedule-service", r -> r.path("/schedule-service/**")
                         .filters(f -> f.filter(filter))
-                        .uri(serviceMapping.getPatientService()))
+                        .uri(serviceMapping.getScheduleService()))
                 .build();
     }
 
