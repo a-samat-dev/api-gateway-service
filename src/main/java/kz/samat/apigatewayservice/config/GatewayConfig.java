@@ -22,6 +22,9 @@ public class GatewayConfig {
     @Bean
     public RouteLocator routes(RouteLocatorBuilder builder) {
         return builder.routes()
+                .route("ref-data-service", r -> r.path("/ref-data-service/**")
+                        .filters(f -> f.filter(filter))
+                        .uri(serviceMapping.getRefDataService()))
                 .route("user-service", r -> r.path("/user-service/**")
                         .filters(f -> f.filter(filter))
                         .uri(serviceMapping.getUserService()))

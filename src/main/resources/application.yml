@@ -6,6 +6,7 @@ spring:
 jwt:
   secret: ${JWT_SECRET:jwtSecret}
 service-mapping:
+  ref-data-service: ${REF_DATA_SERVICE:http://localhost:8081}
   user-service: ${USER_SERVICE:http://localhost:8082}
   patient-service: ${PATIENT_SERVICE:http://localhost:8083}
-  schedule-service: ${SCHEDULE_SERVICE:http://localhost:8083}
+  schedule-service: ${SCHEDULE_SERVICE:http://localhost:8084}
