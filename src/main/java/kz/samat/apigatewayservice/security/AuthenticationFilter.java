@@ -31,7 +31,7 @@ public class AuthenticationFilter implements GatewayFilter {
                 .header("role", "")
                 .build();
 
-        if (headers.containsKey("Authorization")) {
+        if (headers.containsKey("Authorization") || headers.containsKey("authorization")) {
             final String token = headers.getOrEmpty("Authorization").get(0);
             String[] split = token.split(" ");
 
